@@ -1,16 +1,17 @@
 const inquirer = require("inquirer");
 const Manager = require('./lib/Manager');
 const Developer = require('./lib/Developer');
-const Intern = require('./lib/Intern')
+const Intern = require('./lib/Intern');
+const generatePage = require('./src/page-template');
+const { writeFile, copyFile } = require('./utils/generate-site.js');
 
 let manager = [];
 let developer = [];
 let intern = [];
 let team = { manager, developer, intern };
 
-function Prompt() {
-    return inquirer
-    .prompt([
+const promptUser = () => {
+    return inquirer.prompt([
         {
             type: 'list',
             name: 'role',
@@ -54,7 +55,7 @@ function Prompt() {
                 console.log(team)
                 if (addEmployee) {
                     console.log(team)
-                    return Prompt();
+                    return promptUser();
                 }
             })
         } else if ( role === 'Developer') {
@@ -77,7 +78,7 @@ function Prompt() {
                 console.log(team)
                 if (addEmployee) {
                     console.log(team)
-                    return Prompt()
+                    return promptUser()
                 }
             })
         } else {
@@ -100,7 +101,7 @@ function Prompt() {
                 console.log(team)
                 if (addEmployee) {
                     console.log(team)
-                    return Prompt()
+                    return promptUser()
                 }
 
             })
@@ -108,4 +109,20 @@ function Prompt() {
     })
 }
 
-Prompt();
+promptUser()
+.then(team => {
+  return generatePage(team);
+})
+.then(pageHTML => {
+  return writeFile(pageHTML);
+})
+.then(writefileResponse => {
+  console.log(writefileResponse);
+  return copyFile();
+})
+.then(copyFileResponse => {
+  console.log(copyFileResponse);
+})
+.catch(err => {
+  console.log(err);
+});
