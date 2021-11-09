@@ -1,22 +1,33 @@
-const pageGen = teamInfo => {
+const managerGen = teamInfo => {
 
-    
+    console.log(teamInfo);
+
+    let managerData = teamInfo.manager;  // should give us the Manager Array data
+
+    console.log(managerData);
+
+    // Question : If I only have ONE manager, OR what if I have SEVERAL managers? (FOR LOOP)
+    return (
       `
       <div class="col">
       <div class="card h-100">
         <div class="card-body">
-          <h4 class="card-title">NAME</h4>
-          <h5 class="card-text">Title: </h5>
+          <h4 class="card-title">NAME: ${managerData[0].name} </h4>
+          <h5 class="card-text">Title:  ${managerData[0].getRole()} </h5>
           <i class="fas fa-smile-beam"></i>
         </div>
         <ul class="list-group list-group-flush">
-          <li class="list-group-item">ID: </li>
-          <li class="list-group-item">Email: <a href="" class="card-link"></a></li>
-          <li class="list-group-item">Office Number: </li>
+          <li class="list-group-item">ID:  ${managerData[0].id} </li>
+          <li class="list-group-item">Email:${managerData[0].email} <a href="" class="card-link"></a></li>
+          <li class="list-group-item">Office Number: ${managerData[0].office} </li>
         </ul>
       </div>
     </div>
       `
+    )
+}
+
+/*
       return 
   
     
@@ -58,7 +69,18 @@ const pageGen = teamInfo => {
       return 
     return [manager.join(''), developer.join(''), intern.join('')]
   }
-  
+ 
+  */
+
+  // We need a function to see what TYPE of opbest we have in the ARRAY 
+  // We loop through the TEAM ARRAY and TEST (evaluate) 
+  // if(is an Manager OBJECT ) {
+    // generateManager(OBJECT)
+  //} else if (is an Developer OBJECT) {
+    // run generate Developer OBJECT
+  //}
+
+
   module.exports = data => {
     return `
     <!DOCTYPE html>
@@ -79,7 +101,7 @@ const pageGen = teamInfo => {
           <h1 class="head">MY AWESOME TEAM</h1>
         </header>
         <div class="row row-cols-auto row-cols-md-3 g-4">
-      ${pageGen(data).join('')}
+      ${managerGen(data)}
     </body>
     </html>
     `

@@ -6,7 +6,7 @@ test('creates employee object', () => {
 })
 
 test('creates an employee object', () => {
-    const employee = new Employee('Guybrush Threepwood', 1, 'guybrush@lucrebank.com', 'guyhub123');
+    const employee = new Employee('Guybrush Threepwood', 1, 'guybrush@lucrebank.com');
 
     expect(employee.name).toBe('Guybrush Threepwood');
     expect(employee.id).toEqual(expect.any(Number));

@@ -8,7 +8,8 @@ const { writeFile, copyFile } = require('./utils/generate-site.js');
 let manager = [];
 let developer = [];
 let intern = [];
-let team = { manager, developer, intern };
+//let team = { manager, developer, intern };
+let team = [];  // let team = [ Manager, Manager, Developer, Developer, Intern ]
 
 const promptUser = () => {
     return inquirer.prompt([
@@ -52,9 +53,10 @@ const promptUser = () => {
             ])
             .then(({ office, addEmployee}) => {
                 manager.push(new Manager(employee, id, email, office))
-                console.log(team)
+            team.push(new Manager(employee, id, email, office));
+            console.log(team)
                 if (addEmployee) {
-                    console.log(team)
+                  // console.log(team)
                     return promptUser();
                 }
             })
@@ -75,6 +77,7 @@ const promptUser = () => {
             ])
             .then (({ github, addEmployee}) => {
                 developer.push(new Developer(employee, id, email, github))
+                team.push(new Developer(employee, id, email, github));
                 console.log(team)
                 if (addEmployee) {
                     console.log(team)
@@ -98,7 +101,8 @@ const promptUser = () => {
             ])
             .then (({ collegeUniversity, addEmployee }) => {
                 intern.push(new Intern(employee, id, email, collegeUniversity))
-                console.log(team)
+                team.push(new Intern(employee, id, email, collegeUniversity))               
+                 console.log(team)
                 if (addEmployee) {
                     console.log(team)
                     return promptUser()
@@ -111,6 +115,7 @@ const promptUser = () => {
 
 promptUser()
 .then(team => {
+console.log("Team: " + team);  // team = { [], [], [] }
   return generatePage(team);
 })
 .then(pageHTML => {
