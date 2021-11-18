@@ -8,8 +8,7 @@ const { writeFile, copyFile } = require('./utils/generate-site.js');
 let manager = [];
 let developer = [];
 let intern = [];
-//let team = { manager, developer, intern };
-let team = [];  // let team = [ Manager, Manager, Developer, Developer, Intern ]
+let team = [];
 
 const promptUser = () => {
     return inquirer.prompt([
