@@ -53,12 +53,15 @@ const promptUser = () => {
             ])
             .then(({ office, addEmployee}) => {
                 manager.push(new Manager(employee, id, email, office))
-            team.push(new Manager(employee, id, email, office));
-            console.log(team)
+                team.push(new Manager(employee, id, email, office));
+                console.log(team)
                 if (addEmployee) {
                   // console.log(team)
                     return promptUser();
+                } else {
+                    createTeam();
                 }
+            
             })
         } else if ( role === 'Developer') {
             return inquirer
@@ -82,6 +85,8 @@ const promptUser = () => {
                 if (addEmployee) {
                     console.log(team)
                     return promptUser()
+                }  else {
+                    createTeam();
                 }
             })
         } else {
@@ -106,6 +111,8 @@ const promptUser = () => {
                 if (addEmployee) {
                     console.log(team)
                     return promptUser()
+                }  else {
+                    createTeam();
                 }
 
             })
@@ -113,21 +120,27 @@ const promptUser = () => {
     })
 }
 
+function createTeam() {
+    let teamPage = generatePage(team)
+    writeFile(teamPage);
+}
+
 promptUser()
-.then(team => {
-console.log("Team: " + team);  // team = { [], [], [] }
-  return generatePage(team);
-})
-.then(pageHTML => {
-  return writeFile(pageHTML);
-})
-.then(writefileResponse => {
-  console.log(writefileResponse);
-  return copyFile();
-})
-.then(copyFileResponse => {
-  console.log(copyFileResponse);
-})
-.catch(err => {
-  console.log(err);
-});
+/*    .then(team => {
+        console.log("Team: " + team);  // team = { [], [], [] }
+        return generatePage(team);
+        })
+        .then(pageHTML => {
+        return writeFile(pageHTML);
+        })
+        .then(writefileResponse => {
+        console.log(writefileResponse);
+        return copyFile();
+        })
+        .then(copyFileResponse => {
+        console.log(copyFileResponse);
+        })
+        .catch(err => {
+        console.log(err);
+        });
+*/

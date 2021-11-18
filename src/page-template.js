@@ -1,30 +1,48 @@
+// This function only creates a MANAGER CARD
 const managerGen = teamInfo => {
 
-    console.log(teamInfo);
+ /*   let managerArr1 = [];
+    teamInfo.forEach(function(employee) {
+      console.log(employee);
+        if(employee.getRole() == "Manager") {
+          managerArr1.push(employee)
+        }
+    })
+*/
+    let managerData = teamInfo.map(function(employee) {
+        if (employee.getRole() == "Manager") {
+          return employee;
+        }
+    });  // shoulnod give us the Manager Array data
 
-    let managerData = teamInfo.manager;  // should give us the Manager Array data
 
-    console.log(managerData);
+    console.log(managerData);  // IF we have an array
 
     // Question : If I only have ONE manager, OR what if I have SEVERAL managers? (FOR LOOP)
-    return (
-      `
-      <div class="col">
-      <div class="card h-100">
-        <div class="card-body">
-          <h4 class="card-title">NAME: ${managerData[0].name} </h4>
-          <h5 class="card-text">Title:  ${managerData[0].getRole()} </h5>
-          <i class="fas fa-smile-beam"></i>
+
+    // for lopp would be like:
+    // var moreManagers = teamInfo.manager
+    for (let i = 0; i < managerData.length; i++) {
+          // return what is below?
+        return (
+          `
+          <div class="col">
+          <div class="card h-100">
+            <div class="card-body">
+              <h4 class="card-title">NAME: ${managerData[i].name} </h4>
+              <h5 class="card-text">Title:  ${managerData[i].getRole()} </h5>
+              <i class="fas fa-smile-beam"></i>
+            </div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">ID:  ${managerData[i].id} </li>
+              <li class="list-group-item">Email:${managerData[i].email} <a href="" class="card-link"></a></li>
+              <li class="list-group-item">Office Number: ${managerData[i].office} </li>
+            </ul>
+          </div>
         </div>
-        <ul class="list-group list-group-flush">
-          <li class="list-group-item">ID:  ${managerData[0].id} </li>
-          <li class="list-group-item">Email:${managerData[0].email} <a href="" class="card-link"></a></li>
-          <li class="list-group-item">Office Number: ${managerData[0].office} </li>
-        </ul>
-      </div>
-    </div>
-      `
-    )
+          `
+        )
+    } // end of for loop
 }
 
 /*
