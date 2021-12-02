@@ -53,7 +53,7 @@ const promptUser = () => {
             .then(({ office, addEmployee}) => {
                 manager.push(new Manager(employee, id, email, office))
                 team.push(new Manager(employee, id, email, office));
-                console.log(team)
+               // console.log(team)
                 if (addEmployee) {
                   // console.log(team)
                     return promptUser();
@@ -80,7 +80,7 @@ const promptUser = () => {
             .then (({ github, addEmployee}) => {
                 developer.push(new Developer(employee, id, email, github))
                 team.push(new Developer(employee, id, email, github));
-                console.log(team)
+             //   console.log(team)
                 if (addEmployee) {
                     console.log(team)
                     return promptUser()
@@ -106,7 +106,7 @@ const promptUser = () => {
             .then (({ collegeUniversity, addEmployee }) => {
                 intern.push(new Intern(employee, id, email, collegeUniversity))
                 team.push(new Intern(employee, id, email, collegeUniversity))               
-                 console.log(team)
+              //   console.log(team)
                 if (addEmployee) {
                     console.log(team)
                     return promptUser()

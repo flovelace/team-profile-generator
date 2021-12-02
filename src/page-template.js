@@ -1,3 +1,5 @@
+// let cardArray = [];
+
 // This function only creates a MANAGER CARD
 const managerGen = teamInfo => {
 
@@ -9,13 +11,16 @@ const managerGen = teamInfo => {
          }
      })
  */
- let managerData = teamInfo.map(function(employee) {
-         if (employee.getRole() == "Manager") {
-           return employee;
-         }
-     });
+
+// let developers = team.filter(member => member.position == "developer")
+ let managerData = teamInfo.filter(employee => employee.getRole() == "Manager");
+   // Testing condition (IF TRUE add to array, IF FALSE do not add to array)
+
+        
+
  
- console.log(managerData); 
+ console.log(`Manager Array:`); 
+ console.log(managerData);
  
  for (let i = 0; i < managerData.length; i++) {
            // return what is below?
@@ -41,14 +46,17 @@ const managerGen = teamInfo => {
  }
  
  const devGen = teamInfo => {
-   let devData = teamInfo.map(function(employee) {
+   let devData = teamInfo.filter(employee => employee.getRole() == "Developer");
+/*   let devData = teamInfo.map(function(employee) {
      if (employee.getRole() == "Developer") {
        return employee;
      }
    });
+   */
+   console.log(`Developer Array:`);
    console.log(devData);
  
-   for (let i = 0; i < devData.length; i++) {
+   for (let i = 0; i <= devData.length; i++) {
      return (
        `
        <div class="col">
@@ -66,20 +74,17 @@ const managerGen = teamInfo => {
        </div>
      </div>
        `
- 
      )
    }
  }
  
  const internGen = teamInfo => {
-   let internData = teamInfo.map(function(employee) {
-     if (employee.getRole() == "Intern") {
-       return employee;
-     }
-   });
+   let internData = teamInfo.filter(employee => employee.getRole() == "Intern");
+
    console.log(internData);
  
    for (let i = 0; i < internData; i++) {
+
      return (
        `
        <div class="col">
@@ -97,17 +102,16 @@ const managerGen = teamInfo => {
        </div>
      </div>
        `
- 
      )
    }
  }  
      
  
-       return 
+       //return 
    
  
-       return 
-     return [manager.join(''), developer.join(''), intern.join('')]
+      // return 
+     //return [manager.join(''), developer.join(''), intern.join('')]
    //}
  
    // We need a function to see what TYPE of opbest we have in the ARRAY 
