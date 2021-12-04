@@ -4,14 +4,14 @@ const Developer = require('./lib/Developer');
 const Intern = require('./lib/Intern');
 const generatePage = require('./src/page-template');
 const { writeFile, copyFile } = require('./utils/generate-site.js');
+const Prompt = require("inquirer/lib/prompts/base");
 
 let manager = [];
 let developer = [];
 let intern = [];
-//let team = { manager, developer, intern };
-let team = [];  // let team = [ Manager, Manager, Developer, Developer, Intern ]
+let team = { manager, developer, intern };
 
-const promptUser = () => {
+function prompt() {
     return inquirer.prompt([
         {
             type: 'list',
@@ -33,12 +33,12 @@ const promptUser = () => {
             type: 'input',
             name: 'email',
             message: "Please provide the employee's email address."
-        }
+        },
     ])
-    .then(({ employee, id, email, role }) => {
+    .then(({ role, employee, id, email }) => {
         if (role === 'Manager') {
             return inquirer
-            .prompt ([
+            .prompt([
                 {
                     type: 'input',
                     name: 'office',
@@ -51,83 +51,61 @@ const promptUser = () => {
                     default: false
                 }
             ])
-            .then(({ office, addEmployee}) => {
-                manager.push(new Manager(employee, id, email, office))
-            team.push(new Manager(employee, id, email, office));
-            console.log(team)
+            .then(({ office, addEmployee }) => {
+                manager.push(new Manager(employee, id, email, office ))
                 if (addEmployee) {
-                  // console.log(team)
-                    return promptUser();
+                    return Prompt();
                 }
             })
-        } else if ( role === 'Developer') {
-            return inquirer
-            .prompt ([
+        } else if (role === 'Developer') {
+            return inquirer.prompt ([
                 {
                     type: 'input',
                     name: 'github',
-                    message: "Please provide the developer's Github link."
+                    message: "Please provide the developer's Github link"
                 },
                 {
                     type: 'confirm',
                     name: 'addEmployee',
-                    message: "Would you like to add another employee?",
+                    message: "Would you like to add another employee?"
                     default: false
                 }
             ])
             .then (({ github, addEmployee}) => {
-                developer.push(new Developer(employee, id, email, github))
-                team.push(new Developer(employee, id, email, github));
-                console.log(team)
+                developer.push(new Developer (employee, id, email, github))
                 if (addEmployee) {
-                    console.log(team)
-                    return promptUser()
+                    return Prompt();
                 }
             })
         } else {
             return inquirer
-            .prompt ([
+            .prompt([
                 {
                     type: 'input',
                     name: 'collegeUniversity',
-                    message: "Please enter the intern's college or university."
+                    message: "Please enter the intern's college of university."
                 },
                 {
                     type: 'confirm',
                     name: 'addEmployee',
-                    message: "Would you like to add another employee?",
-                    default: false
+                    message: "Would you like to add another employee",
                 }
             ])
             .then (({ collegeUniversity, addEmployee }) => {
-                intern.push(new Intern(employee, id, email, collegeUniversity))
-                team.push(new Intern(employee, id, email, collegeUniversity))               
-                 console.log(team)
+                intern.push(new intern (employee, id, email, collegeUniversity))
                 if (addEmployee) {
-                    console.log(team)
-                    return promptUser()
+                    return Prompt();
                 }
-
             })
         }
     })
 }
 
-promptUser()
-.then(team => {
-console.log("Team: " + team);  // team = { [], [], [] }
-  return generatePage(team);
+Prompt()
+.then(endTeam => {
+    return pageGen(team)
 })
-.then(pageHTML => {
-  return writeFile(pageHTML);
-})
-.then(writefileResponse => {
-  console.log(writefileResponse);
-  return copyFile();
-})
-.then(copyFileResponse => {
-  console.log(copyFileResponse);
-})
-.catch(err => {
-  console.log(err);
+.then (renderHtml => {
+    copyFile()
+    return writeFile(renderHtml)
 });
