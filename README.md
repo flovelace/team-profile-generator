@@ -17,7 +17,7 @@ https://watch.screencastify.com/v/Z9q3an5PmM2tPBFvAp6k
 https://github.com/flovelace/team-profile-generator
 
 ## Screenshot
-!(https://user-images.githubusercontent.com/86391225/144734355-392afee6-5811-40de-b49c-cd74eb7e7bd7.png)
+![Team Profile Generator](https://user-images.githubusercontent.com/86391225/144734355-392afee6-5811-40de-b49c-cd74eb7e7bd7.png)
 
 ## Contribution
 Made with ❤️ by Fairfax
