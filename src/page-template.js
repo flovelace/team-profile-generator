@@ -1,5 +1,5 @@
 const renderPage = genTeam => {
-
+// use map array to filter the data taken from inquirer into our array
   const manager = genTeam.manager.map(function (team) {
     // use let so variable can be updated
     let managerCard = `
@@ -60,7 +60,7 @@ const renderPage = genTeam => {
     `
     return internCard
   });
-
+//concat the elements in our map array with join
   return [manager.join(''), developer.join(''), intern.join('')]
 
 }
