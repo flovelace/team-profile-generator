@@ -1,4 +1,32 @@
 .head {
     font-family: 'IM Fell English SC', serif;
     font-size: 50px;
+    text-align: center;
+    background-color: #000;
+    color: #fff;
+}
+
+.fas {
+    font-size: 30px;
+    color: #fff
+}
+
+.col {
+    padding: 30px;
+}
+
+.card-body {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    background-color: #000;
+    color: #fff;
+}
+
+.list-group-item {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 18px;
+    border: 2px solid #000;
+}
+
+.card {
+    border: 2px solid #000;
 }

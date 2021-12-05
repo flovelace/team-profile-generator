@@ -6,14 +6,14 @@ const renderPage = genTeam => {
     <div class="col">
     <div class="card h-100">
       <div class="card-body">
-        <h4 class="card-title">NAME: ${team.name}</h4>
-        <h5 class="card-text">Title: ${team.getRole()}</h5>
+        <h4 class="card-title"><b>Name:</b> ${team.name}</h4>
+        <h5 class="card-text"><b>Title:</b> ${team.getRole()}</h5>
         <i class="fas fa-smile-beam"></i>
       </div>
       <ul class="list-group list-group-flush">
-        <li class="list-group-item">ID: ${team.id} </li>
-        <li class="list-group-item">Email: ${team.email} <a href="" class="card-link"></a></li>
-        <li class="list-group-item">Office Number: ${team.office} </li>
+        <li class="list-group-item"><b>ID:</b> ${team.id}</li>
+        <li class="list-group-item"><b>Email:</b> ${team.email}</li>
+        <li class="list-group-item"><b>Office Number:</b> ${team.office}</li>
       </ul>
     </div>
   </div>
@@ -26,14 +26,14 @@ const renderPage = genTeam => {
     <div class="col">
     <div class="card h-100">
       <div class="card-body">
-        <h4 class="card-title">NAME: ${team.name}</h4>
-        <h5 class="card-text">Title: ${team.getRole()}</h5>
+        <h4 class="card-title"><b>Name:</b> ${team.name}</h4>
+        <h5 class="card-text"><b>Title:</b> ${team.getRole()}</h5>
         <i class="far fa-grin"></i>
       </div>
       <ul class="list-group list-group-flush">
-        <li class="list-group-item">ID: ${team.id}</li>
-        <li class="list-group-item">Email: ${team.email} <a href="" class="card-link"></a></li>
-        <li class="list-group-item">GitHub: ${team.github}<a href="" target="_blank" class="card-link"></a></li>
+        <li class="list-group-item"><b>ID:</b> ${team.id}</li>
+        <li class="list-group-item"><b>Email:</b> ${team.email}</li>
+        <li class="list-group-item"><b>GitHub:</b> ${team.github}<a href="" target="_blank" class="card-link"></a></li>
       </ul>
     </div>
   </div>
@@ -46,84 +46,25 @@ const renderPage = genTeam => {
     <div class="col">
     <div class="card h-100">
       <div class="card-body">
-        <h4 class="card-title">NAME: ${team.name}</h4>
-        <h5 class="card-text">Title: ${team.getRole()}</h5>
+        <h4 class="card-title"><b>Name:</b> ${team.name}</h4>
+        <h5 class="card-text"><b>Title:</b> ${team.getRole()}</h5>
         <i class="far fa-smile"></i>
       </div>
       <ul class="list-group list-group-flush">
-        <li class="list-group-item">ID: ${team.id}</li>
-        <li class="list-group-item">Email: ${team.email}<a href="" class="card-link"></a></li>
-        <li class="list-group-item">School: ${team.collegeUniversity}</li>
+        <li class="list-group-item"><b>ID:</b> ${team.id}</li>
+        <li class="list-group-item"><b>Email:</b> ${team.email}</li>
+        <li class="list-group-item"><b>University/College:</b> ${team.collegeUniversity}</li>
       </ul>
     </div>
   </div>
     `
     return internCard
   });
+
   return [manager.join(''), developer.join(''), intern.join('')]
 
- }
- 
- const devGen = teamInfo => {
-   let devData = teamInfo.filter(employee => employee.getRole() == "Developer");
-/*   let devData = teamInfo.map(function(employee) {
-     if (employee.getRole() == "Developer") {
-       return employee;
-     }
-   });
-   */
-   console.log(`Developer Array:`);
-   console.log(devData);
- 
-   for (let i = 0; i <= devData.length; i++) {
-     return (
-       `
-       <div class="col">
-       <div class="card h-100">
-         <div class="card-body">
-           <h4 class="card-title">NAME: ${devData[i].name}</h4>
-           <h5 class="card-text">Title: ${devData[i].getRole()}</h5>
-           <i class="far fa-grin"></i>
-         </div>
-         <ul class="list-group list-group-flush">
-           <li class="list-group-item">ID: ${devData[i].id}</li>
-           <li class="list-group-item">Email: ${devData[i].email} <a href="" class="card-link"></a></li>
-           <li class="list-group-item">GitHub: ${devData[i].github}<a href="" target="_blank" class="card-link"></a></li>
-         </ul>
-       </div>
-     </div>
-       `
-     )
-   }
- }
- 
- const internGen = teamInfo => {
-   let internData = teamInfo.filter(employee => employee.getRole() == "Intern");
+}
 
-   console.log(internData);
- 
-   for (let i = 0; i < internData; i++) {
-
-     return (
-       `
-       <div class="col">
-       <div class="card h-100">
-         <div class="card-body">
-           <h4 class="card-title">NAME: ${internData[i].name}</h4>
-           <h5 class="card-text">Title: ${internData[i].getRole()}</h5>
-           <i class="far fa-smile"></i>
-         </div>
-         <ul class="list-group list-group-flush">
-           <li class="list-group-item">ID: ${internData[i].id}</li>
-           <li class="list-group-item">Email: ${internData[i].email}<a href="" class="card-link"></a></li>
-           <li class="list-group-item">School: ${internData[i].collegeUniversity}</li>
-         </ul>
-       </div>
-     </div>
-       `
-     )
-   }
- }
 module.exports = data => {
   return `
   <!DOCTYPE html>
