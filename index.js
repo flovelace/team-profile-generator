@@ -3,7 +3,8 @@ const Manager = require('./lib/Manager');
 const Developer = require('./lib/Developer');
 const Intern = require('./lib/Intern');
 const generatePage = require('./src/page-template');
-const { writeFile, copyFile } = require('./utils/generate-site.js');
+const writeFile = require('./utils/file-gen');
+const copyFile = require('./utils/copy-file');
 
 let manager = [];
 let developer = [];
@@ -101,8 +102,8 @@ function prompt() {
 }
 
 prompt()
-.then(endTeam => {
-    return pageGen(team)
+.then(genTeam => {
+    return generatePage(team)
 })
 .then (renderHtml => {
     copyFile()
