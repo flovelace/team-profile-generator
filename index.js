@@ -62,7 +62,7 @@ function prompt() {
                 {
                     type: 'input',
                     name: 'github',
-                    message: "Please provide the developer's Github link"
+                    message: "Please provide the developer's Github username."
                 },
                 {
                     type: 'confirm',
@@ -83,12 +83,12 @@ function prompt() {
                 {
                     type: 'input',
                     name: 'collegeUniversity',
-                    message: "Please enter the intern's college of university."
+                    message: "Please enter the intern's college or university."
                 },
                 {
                     type: 'confirm',
                     name: 'addEmployee',
-                    message: "Would you like to add another employee",
+                    message: "Would you like to add another employee?",
                 }
             ])
             .then (({ collegeUniversity, addEmployee }) => {
@@ -102,7 +102,7 @@ function prompt() {
 }
 
 prompt()
-.then(genTeam => {
+.then(teamGen => {
     return generatePage(team)
 })
 .then (renderHtml => {
